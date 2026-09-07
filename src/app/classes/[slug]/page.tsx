@@ -4,7 +4,6 @@ import PageHeader from "@/components/PageHeader";
 import { allClasses } from "@/data/classes";
 import type { ClassLevel, PerceptionProficiency, spellcastingProgression } from "@/types/character-class";
 import { allProgressions } from "@/data/spell progression";
-import { SpellProgression } from "@/types/spell-progression";
 
 export function generateStaticParams() {
   return allClasses.map((c) => ({ slug: c.slug }));
