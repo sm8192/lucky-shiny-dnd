@@ -1,0 +1,48 @@
+export const metadata = {
+  title: "Ability Scores",
+  description: "The six core attributes that define every character.",
+  order: 2,
+};
+
+# Ability Scores
+
+Every character and creature in the game is defined by six **ability scores**. These scores measure natural talent and training, and they underpin nearly every roll you make.
+
+## The Six Abilities
+
+| Ability | Abbreviation | Governs |
+|---|---|---|
+| Strength | STR | Physical power, melee attacks, carrying capacity |
+| Dexterity | DEX | Agility, ranged attacks, stealth, initiative |
+| Constitution | CON | Endurance, hit points, resisting poison and disease |
+| Intelligence | INT | Memory, reasoning, arcane magic |
+| Wisdom | WIS | Perception, intuition, divine magic |
+| Charisma | CHA | Personality, persuasion, performance |
+
+## Score and Modifier
+
+Each score ranges from 1 to 20 for most adventurers (though powerful creatures may exceed this). The **modifier** derived from the score is what actually gets added to rolls:
+
+| Score | Modifier |
+|---|---|
+| 1 | −5 |
+| 2–3 | −4 |
+| 4–5 | −3 |
+| 6–7 | −2 |
+| 8–9 | −1 |
+| 10–11 | +0 |
+| 12–13 | +1 |
+| 14–15 | +2 |
+| 16–17 | +3 |
+| 18–19 | +4 |
+| 20 | +5 |
+
+To calculate a modifier: **floor((score − 10) / 2)**.
+
+## Generating Scores
+
+At character creation, use one of the following methods as agreed upon by your group:
+
+- **Standard Array:** Assign the values 15, 14, 13, 12, 10, 8 to your six abilities in any order.
+- **Point Buy:** Start with all scores at 8 and spend 27 points. Scores 9–13 cost 1 point each; 14 costs 5 total; 15 costs 7 total.
+- **Rolled:** Roll 4d6, drop the lowest die, and sum the remaining three. Repeat six times and assign freely.

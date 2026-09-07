@@ -1,0 +1,57 @@
+export const metadata = {
+  title: "Combat",
+  description: "Rules for resolving fights, conflicts, and dangerous encounters.",
+  order: 3,
+};
+
+# Combat
+
+Combat is turn-based and proceeds in **rounds**. Each round represents roughly 6 seconds of in-world time. Every participant acts once per round, in initiative order.
+
+## The Order of Combat
+
+1. **Surprise.** If one side catches the other unaware, surprised creatures cannot act during the first round.
+2. **Roll Initiative.** Each participant rolls a d20 and adds their DEX modifier. Ties are broken by the higher DEX score; further ties are broken simultaneously.
+3. **Take Turns.** Starting with the highest initiative, each combatant takes their turn. Play proceeds until one side is defeated, flees, or surrenders.
+
+## On Your Turn
+
+On your turn you may:
+
+- Take one **Action**
+- Take one **Bonus Action** (if a feature grants one)
+- Move up to your full **Speed**
+
+These can be taken in any order and interrupted by each other (e.g., move, attack, move again — as long as total movement doesn't exceed your speed).
+
+## Actions in Combat
+
+| Action | Description |
+|---|---|
+| Attack | Make one or more weapon or unarmed attacks |
+| Cast a Spell | Cast a spell with a casting time of 1 action |
+| Dash | Gain extra movement equal to your speed this turn |
+| Disengage | Movement doesn't provoke opportunity attacks until end of turn |
+| Dodge | Attacks against you have disadvantage; DEX saves have advantage |
+| Help | Give an ally advantage on their next ability check or attack |
+| Hide | Attempt a Stealth check to become hidden |
+| Ready | Prepare an action to trigger on a specific condition |
+| Search | Make a Perception or Investigation check |
+| Use an Object | Interact with an object requiring more than a free interaction |
+
+## Attack Rolls
+
+Roll a d20 and add your **attack bonus** (ability modifier + proficiency bonus if proficient). Compare the total to the target's **Armor Class (AC)**. On a match or higher, the attack hits.
+
+- **Critical Hit:** A natural 20 always hits. Roll all damage dice twice and add modifiers once.
+- **Automatic Miss:** A natural 1 always misses.
+
+## Damage and Hit Points
+
+On a hit, roll the weapon's damage dice and add the relevant modifier. Subtract the result from the target's **hit points (HP)**.
+
+A creature reduced to 0 HP falls **unconscious** (for player characters) or dies (for most enemies). See the *Death and Dying* section for details on stabilising unconscious characters.
+
+## Conditions
+
+Conditions are temporary states that alter a creature's capabilities. Common conditions include **blinded**, **charmed**, **frightened**, **paralyzed**, **poisoned**, **prone**, **restrained**, and **stunned**. Each condition's mechanical effects are listed in the Conditions appendix.

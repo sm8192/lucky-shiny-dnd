@@ -1,7 +1,17 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Allow .md and .mdx files to be used as pages or imports
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  options: {
+    // Use string form so Turbopack can serialise the plugin reference
+    remarkPlugins: ["remark-gfm"],
+    rehypePlugins: [],
+  },
+});
+
+export default withMDX(nextConfig);
