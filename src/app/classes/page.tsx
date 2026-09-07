@@ -30,7 +30,7 @@ export default function ClassesIndexPage() {
                 <StatBadge label="Hit Die" value={cls.hitDie} />
                 <StatBadge
                   label="Saves"
-                  value={cls.savingThrows.join(", ")}
+                  value={cls.savingThrow}
                 />
               </div>
               <p className="line-clamp-3 text-sm text-stone-500 dark:text-stone-400">

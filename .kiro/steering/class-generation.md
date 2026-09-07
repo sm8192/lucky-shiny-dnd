@@ -25,16 +25,17 @@ Key fields:
 | `slug` | Kebab-case, URL-safe. Must match the file name. |
 | `name` | Title-case display name. |
 | `description` | 2–4 sentences. Conveys the class fantasy and role at the table. No mechanical details here. |
-| `hitDie` | One of: `"d6"`, `"d8"`, `"d10"`, `"d12"`. |
-| `primaryAbility` | 1–2 ability scores. Use the full-caster standard (INT/WIS/CHA) for casters; STR or DEX for martials. |
-| `perception` | One of: `"half"`, `"full"`, `"oneHalf"`, `"double"`. Use `"half"` for cloistered/bookish classes, `"full"` for most martials, `"oneHalf"` for scouts/rangers, `"double"` for dedicated sentinels or tracker archetypes. |
-| `armorProficiencies` | Use the typed union values; add custom strings only when necessary. |
-| `weaponProficiencies` | Same rule. Avoid listing individual weapons unless the class is genuinely restricted. |
-| `skillChoices.count` | Typically 2–4. |
-| `skillChoices.options` | 6–10 thematically appropriate skills. |
-| `startingEquipment` | 3–4 option strings, written as "X or Y" choices. |
+| `hitDie` | Use the typed union values. More durable classes use a larger die. |
+| `savingThrow` | Use the typed union values. Choose the one that best matches the class's fantasy. |
+| `perception` | Use the typed union values. Higher values are for classes that are better at scouting and using their senses.|
+| `armorProficiency` | Use the typed union values. More martially inclined classes should generally have heavier armor proficiency. Each category includes armor of lighter categories as well.|
+| `weaponProficiency` | Same rule. More weapon-oriented classes should use martial.|
+| `shieldProficiency` | True or false. Shields are reserved for certain martial classes.|
 | `levels` | Exactly 20 entries, one per level. See Progression Rules below. |
-| `subclasses` | At least 1. See Subclass Rules below. |
+| `choiceLevel` | Determines at which level characters of that class choose their subclass, which impacts the number and levels of subclass features.|
+| `subclasses` | At least 4. See Subclass Rules below. |
+| `expertise` | Each class has two categories of expertise: exploration and social. These represent situations in which characters of that class are expected to excel, and take the form of a "when" condition that describes the situation.|
+
 
 ## Progression Rules
 
@@ -50,28 +51,30 @@ The proficiency bonus follows this fixed schedule — never deviate from it:
 | 13–16 | +5 |
 | 17–20 | +6 |
 
-### Ability Score Improvements (ASI)
+### Feats
 
-Non-caster martials receive ASIs at levels 4, 6, 8, 12, 14, 16, 19 (7 total).
-Full casters receive ASIs at levels 4, 8, 12, 16, 19 (5 total).
-Half-casters (paladin-style) receive ASIs at levels 4, 8, 12, 16, 19 (5 total).
+Characters select two eligible feats at level 1, and then choose additional feats at levels 4, 8, 12, and 16. At level 20, characters may choose either a normal feat or a special 'Capstone' feat.
 
 ### Feature Density
 
 - Level 1 must have at least 2 features (the class identity should be playable immediately).
+- Levels 1 - 3 contain the key identifying features of the class.
+- Levels 1, 5, 11, and 17 should give characters a significant benefit that is useful in combat.
+- Level 19 should give each class a powerful feature that represents the full might of that class.
 - Avoid giving more than 3 significant features at any single level.
-- Even-numbered levels without an ASI can have minor features or improvements to existing ones.
-- Capstone (level 20) must include a named, impactful feature — not just an ASI.
+- Classes should generally include some feature on each level unless the class gets a subclass feature at that level, according to the rules below.
 
 ### Subclass Integration
 
-- Pick a level for subclass choice (typically 1, 2, or 3).
-- Subclass features arrive at consistent intervals — usually 4 levels apart after the choice level (e.g. 3, 7, 10, 15, 18 or 1, 6, 11, 17).
+- Each class has a choiceLevel of 1, 2, or 3.
+- Classes with a choiceLevel 1 have subclass features at levels 1, 5, 9, 11, 15, and 19.
+- Classes with a choiceLevel 2 have subclass features at levels 2, 6, 10, 14, and 18.
+- Classes with a choiceLevel 3 have subclass features at levels 3, 7, 13, and 17.
 - Reference the subclass feature in the `levels` array as `"<SubclassName> Feature"` or the generic `"<ArchetypeName> Feature"` if the subclass isn't chosen yet.
 
 ### Spell Slots (casters only)
 
-- Full casters use the standard Wizard/Cleric slot progression.
+- Full casters gain spell slots at each level. 
 - Half-casters use the standard Paladin/Ranger slot progression (first slots at level 2, 9th-level slots never reached).
 - Populate `spellSlots` only on the `ClassLevel` entries where the class actually casts; leave it undefined for non-casting classes.
 - Use the `extras` field for resources that aren't spell slots (ki points, rage uses, sorcery points, etc.).

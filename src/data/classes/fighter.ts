@@ -6,9 +6,10 @@ export const fighter: CharacterClass = {
   description:
     "Fighters are masters of martial combat, skilled with a variety of weapons and armors. They are the most versatile of adventurers, excelling at both offense and defense, and capable of weathering the most punishing battles.",
   hitDie: "d10",
-  savingThrows: ["Fortitude"],
-  armorProficiencies: ["light armor", "medium armor", "heavy armor", "shields"],
-  weaponProficiencies: ["simple", "martial"],
+  savingThrow: "Fortitude",
+  armorProficiency: "heavy",
+  weaponProficiency: "martial",
+  shieldProficiency: true,
   perception: "1",
   levels: [
     { level: 1, features: ["Fighting Style", "Second Wind"] },
@@ -75,5 +76,6 @@ export const fighter: CharacterClass = {
   expertise: {
     exploration: [],
     social: []
-  }
+  },
+  spellcasting: "none"
 };

@@ -1,7 +1,7 @@
-export type Dice = "d4" | "d6" | "d8" | "d10" | "d12";
+export type Dice = "d6" | "d8" | "d10" | "d12";
 
 export type AbilityScore =
-  | "STR"
+  "STR"
   | "DEX"
   | "CON"
   | "INT"
@@ -14,19 +14,18 @@ export type SavingThrow = "Fortitude" | "Reflex" | "Will";
 export type PerceptionProficiency = ".5" | "1" | "1.5" | "2";
 
 export type ArmorProficiency =
-  | "light armor"
-  | "medium armor"
-  | "heavy armor"
-  | "shields";
+  "none"
+  | "light"
+  | "medium"
+  | "heavy";
 
-export type WeaponProficiency =
-  | "simple"
-  | "martial";
+export type WeaponProficiency = "simple" | "martial";
+
+export type spellcastingProgression = "none" | "half" | "full" | "pact";
 
 export interface ClassLevel {
   level: number;
   features: string[];
-  spellSlots?: Partial<Record<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9, number>>;
   extras?: Record<string, number | string>;
 }
 
@@ -34,7 +33,6 @@ export interface ClassLevel {
 export interface Subclass {
   slug: string;
   name: string;
-  /** Level at which the subclass is chosen */
   description: string;
   features: {
     level: number;
@@ -53,12 +51,15 @@ export interface CharacterClass {
   name: string;
   description: string;
   hitDie: Dice;
-  savingThrows: SavingThrow[];
-  armorProficiencies: ArmorProficiency[];
-  weaponProficiencies: WeaponProficiency[];
+  savingThrow: SavingThrow;
+  armorProficiency: ArmorProficiency;
+  weaponProficiency: WeaponProficiency;
+  shieldProficiency: boolean;
   perception: PerceptionProficiency;
   levels: ClassLevel[];
+  /**Level at which subclass is chosen */
   choiceLevel: number;
   subclasses: Subclass[];
   expertise: Expertise;
+  spellcasting: spellcastingProgression;
 }
