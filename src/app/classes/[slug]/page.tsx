@@ -29,11 +29,12 @@ export default async function ClassDetailPage({
 }) {
   const { slug } = await params;
   const cls = allClasses.find((c) => c.slug === slug);
-  const slots = allProgressions.find((p) => p.name === cls?.spellcasting) ?? {
+  if (!cls) notFound();
+
+  const slots = allProgressions.find((p) => p.name === cls.spellcasting) ?? {
     name: "none",
     levels: []
   };
-  if (!cls) notFound();
 
   // Collect all spell slot levels actually used by this class
   const slotLevels = getSlotLevels(cls.spellcasting);
@@ -80,7 +81,7 @@ export default async function ClassDetailPage({
             </thead>
             <tbody>
               {cls.levels.map((row) => (
-                <LevelRow key={row.level} row={row} slotLevels={slotLevels} slots={slots.levels[row.level]} />
+                <LevelRow key={row.level} row={row} slotLevels={slotLevels} slots={slots.levels[row.level - 1]} />
               ))}
             </tbody>
           </table>
