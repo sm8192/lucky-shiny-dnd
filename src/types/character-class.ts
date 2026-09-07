@@ -8,6 +8,11 @@ export type AbilityScore =
   | "WIS"
   | "CHA";
 
+export type SavingThrow = "Fortitude" | "Reflex" | "Will";
+
+/**Multiply a character's proficiency bonus by this number to calculate that character's proficiency score.*/
+export type PerceptionProficiency = ".5" | "1" | "1.5" | "2";
+
 export type ArmorProficiency =
   | "light armor"
   | "medium armor"
@@ -15,18 +20,13 @@ export type ArmorProficiency =
   | "shields";
 
 export type WeaponProficiency =
-  | "simple weapons"
-  | "martial weapons"
-  | string; // allows custom weapon categories
+  | "simple"
+  | "martial";
 
-/** A single row in the class progression table */
 export interface ClassLevel {
   level: number;
-  proficiencyBonus: number;
   features: string[];
-  /** Spell slots per spell level, keyed 1–9. Omit for non-casters. */
   spellSlots?: Partial<Record<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9, number>>;
-  /** Any other numeric columns specific to the class (e.g. Rage uses, Ki points) */
   extras?: Record<string, number | string>;
 }
 
@@ -35,7 +35,6 @@ export interface Subclass {
   slug: string;
   name: string;
   /** Level at which the subclass is chosen */
-  choiceLevel: number;
   description: string;
   features: {
     level: number;
@@ -44,22 +43,22 @@ export interface Subclass {
   }[];
 }
 
+export interface Expertise {
+  exploration: string[];
+  social: string[];
+}
+
 export interface CharacterClass {
-  /** Unique URL-safe identifier, e.g. "fighter" */
   slug: string;
   name: string;
   description: string;
   hitDie: Dice;
-  primaryAbility: AbilityScore[];
-  savingThrows: AbilityScore[];
+  savingThrows: SavingThrow[];
   armorProficiencies: ArmorProficiency[];
   weaponProficiencies: WeaponProficiency[];
-  skillChoices: {
-    count: number;
-    options: string[];
-  };
-  startingEquipment: string[];
-  /** Full 1–20 progression table */
+  perception: PerceptionProficiency;
   levels: ClassLevel[];
+  choiceLevel: number;
   subclasses: Subclass[];
+  expertise: Expertise;
 }

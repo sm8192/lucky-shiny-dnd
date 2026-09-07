@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import { allClasses } from "@/data/classes";
-import type { ClassLevel } from "@/types/character-class";
+import type { ClassLevel, PerceptionProficiency } from "@/types/character-class";
 
 export function generateStaticParams() {
   return allClasses.map((c) => ({ slug: c.slug }));
@@ -34,8 +34,8 @@ export default async function ClassDetailPage({
   // Collect all spell slot levels actually used by this class
   const slotLevels = hasSpellSlots
     ? ([1, 2, 3, 4, 5, 6, 7, 8, 9] as const).filter((sl) =>
-        cls.levels.some((l) => l.spellSlots?.[sl] !== undefined)
-      )
+      cls.levels.some((l) => l.spellSlots?.[sl] !== undefined)
+    )
     : [];
 
   return (
@@ -43,10 +43,10 @@ export default async function ClassDetailPage({
       <PageHeader title={cls.name} description={cls.description} badge="Class" />
 
       {/* Quick stats */}
-      <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-5">
         <QuickStat label="Hit Die" value={cls.hitDie} />
-        <QuickStat label="Primary Ability" value={cls.primaryAbility.join(" / ")} />
         <QuickStat label="Saving Throws" value={cls.savingThrows.join(", ")} />
+        <QuickStat label="Perception" value={perceptionLabel(cls.perception)} />
         <QuickStat label="Subclasses" value={String(cls.subclasses.length)} />
       </div>
 
@@ -56,22 +56,12 @@ export default async function ClassDetailPage({
           <ProfRow label="Armor" values={cls.armorProficiencies} />
           <ProfRow label="Weapons" values={cls.weaponProficiencies} />
           <div>
-            <dt className="font-semibold text-stone-500 dark:text-stone-400">Skills</dt>
+            <dt className="font-semibold text-stone-500 dark:text-stone-400">Perception</dt>
             <dd className="mt-0.5 text-stone-800 dark:text-stone-200">
-              Choose {cls.skillChoices.count} from{" "}
-              {cls.skillChoices.options.join(", ")}
+              {perceptionLabel(cls.perception)}
             </dd>
           </div>
         </dl>
-      </Section>
-
-      {/* Starting Equipment */}
-      <Section title="Starting Equipment">
-        <ul className="list-disc pl-5 text-sm text-stone-700 dark:text-stone-300 space-y-1">
-          {cls.startingEquipment.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
       </Section>
 
       {/* Level progression table */}
@@ -111,7 +101,7 @@ export default async function ClassDetailPage({
                     {sub.name}
                   </h3>
                   <span className="text-xs text-stone-400">
-                    Chosen at level {sub.choiceLevel}
+                    Chosen at level {cls.choiceLevel}
                   </span>
                 </div>
                 <p className="mb-4 text-sm text-stone-600 dark:text-stone-400">
@@ -196,7 +186,7 @@ function LevelRow({
         {row.level}
       </td>
       <td className="px-2 py-1.5 text-stone-600 dark:text-stone-400">
-        +{row.proficiencyBonus}
+        +{Math.ceil(row.level / 4) + 1}
       </td>
       <td className="px-2 py-1.5 text-stone-600 dark:text-stone-400">
         {row.features.length > 0 ? row.features.join(", ") : "—"}
@@ -217,4 +207,13 @@ function ordinal(n: number) {
   const suffixes = ["th", "st", "nd", "rd"];
   const v = n % 100;
   return n + (suffixes[(v - 20) % 10] ?? suffixes[v] ?? suffixes[0]);
+}
+
+function perceptionLabel(p: PerceptionProficiency): string {
+  switch (p) {
+    case ".5": return "½ proficiency";
+    case "1": return "Full proficiency";
+    case "1.5": return "1½× proficiency";
+    case "2": return "Double proficiency";
+  }
 }

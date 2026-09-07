@@ -29,10 +29,6 @@ export default function ClassesIndexPage() {
               <div className="flex flex-wrap gap-1.5">
                 <StatBadge label="Hit Die" value={cls.hitDie} />
                 <StatBadge
-                  label="Primary"
-                  value={cls.primaryAbility.join(" / ")}
-                />
-                <StatBadge
                   label="Saves"
                   value={cls.savingThrows.join(", ")}
                 />
