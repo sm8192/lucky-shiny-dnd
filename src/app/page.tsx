@@ -7,7 +7,7 @@ import { allMonsters } from "@/data/monsters";
 
 export const metadata: Metadata = {
   title: "Home",
-  description: "A complete online reference for the rules, classes, spells, and monsters.",
+  description: "An online reference for Shiny New rules, player options, and monsters.",
 };
 
 const sections = [
@@ -48,11 +48,10 @@ export default function HomePage() {
       <section className="border-b border-stone-200 bg-stone-900 py-20 text-center dark:border-stone-800">
         <p className="mb-3 text-4xl">📖</p>
         <h1 className="text-4xl font-extrabold tracking-tight text-stone-100 sm:text-5xl">
-          The Rulebook
+          Shiny New D&D
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-lg text-stone-400">
-          A complete online reference for rules, classes, spells, and monsters.
-          Built for the table, readable anywhere.
+          An online reference for Shiny New rules, character options, and monsters.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
@@ -106,25 +105,6 @@ export default function HomePage() {
             );
           })}
         </ul>
-      </section>
-
-      {/* Quick-start tip */}
-      <section className="mx-auto w-full max-w-5xl px-4 pb-12">
-        <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900/50 dark:bg-amber-950/30">
-          <p className="text-sm font-semibold text-amber-800 dark:text-amber-300">
-            💡 Adding content
-          </p>
-          <p className="mt-1 text-sm text-amber-700 dark:text-amber-400">
-            New rule chapters go in{" "}
-            <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/50">
-              src/content/rules/
-            </code>{" "}
-            as <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/50">.mdx</code> files.
-            New spells, classes, and monsters go in the matching{" "}
-            <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/50">src/data/</code>{" "}
-            subfolder — add the export to the index barrel and it appears automatically.
-          </p>
-        </div>
       </section>
     </div>
   );
