@@ -80,7 +80,7 @@ Characters select two eligible feats at level 1, and then choose additional feat
 
 ## Subclass Rules
 
-- Each subclass must have a `slug` (kebab-case), `name` (title-case), `choiceLevel`, `description` (2–3 sentences), and at least 4 `features`.
+- Each subclass must have a `slug` (kebab-case), `name` (title-case),  `description` (2–3 sentences), and at least 4 `features`.
 - Feature descriptions must be self-contained mechanical text — no cross-references like "see page X."
 - Avoid repeating the same mechanical effect across multiple subclasses of the same class.
 - A subclass's first feature must be strong enough to define the subclass identity.
