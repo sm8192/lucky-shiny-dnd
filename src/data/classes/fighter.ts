@@ -62,7 +62,7 @@ export const fighter: CharacterClass = {
           level: 15,
           name: "Superior Critical",
           description:
-            "Your weapon attacks score a critical hit on a roll of 18–20.",
+            "Your weapon attacks score a critical hit on a roll of 18-20.",
         },
         {
           level: 18,
