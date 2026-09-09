@@ -12,26 +12,268 @@ export const monk: CharacterClass = {
   shieldProficiency: false,
   perception: "1.5",
   levels: [
-    { level: 1, features: ["Unarmored Defense", "Martial Arts"], extras: { kiPoints: 0, martialArtsDie: "d4" } },
-    { level: 2, features: ["Ki", "Unarmored Movement (+10 ft)"], extras: { kiPoints: 2, martialArtsDie: "d4" } },
-    { level: 3, features: ["Monastic Tradition", "Deflect Missiles"], extras: { kiPoints: 3, martialArtsDie: "d4" } },
-    { level: 4, features: ["Slow Fall", "Feat"], extras: { kiPoints: 4, martialArtsDie: "d4" } },
-    { level: 5, features: ["Extra Attack", "Stunning Strike"], extras: { kiPoints: 5, martialArtsDie: "d6" } },
-    { level: 6, features: ["Ki-Empowered Strikes", "Monastic Tradition Feature", "Unarmored Movement (+15 ft)"], extras: { kiPoints: 6, martialArtsDie: "d6" } },
-    { level: 7, features: ["Evasion", "Stillness of Mind"], extras: { kiPoints: 7, martialArtsDie: "d6" } },
-    { level: 8, features: ["Feat"], extras: { kiPoints: 8, martialArtsDie: "d6" } },
-    { level: 9, features: ["Unarmored Movement (+20 ft)", "Unarmored Movement (vertical)"], extras: { kiPoints: 9, martialArtsDie: "d6" } },
-    { level: 10, features: ["Purity of Body"], extras: { kiPoints: 10, martialArtsDie: "d6" } },
-    { level: 11, features: ["Monastic Tradition Feature", "Focused Strike"], extras: { kiPoints: 11, martialArtsDie: "d8" } },
-    { level: 12, features: ["Feat"], extras: { kiPoints: 12, martialArtsDie: "d8" } },
-    { level: 13, features: ["Tongue of the Sun and Moon", "Unarmored Movement (+25 ft)"], extras: { kiPoints: 13, martialArtsDie: "d8" } },
-    { level: 14, features: ["Diamond Soul"], extras: { kiPoints: 14, martialArtsDie: "d8" } },
-    { level: 15, features: ["Timeless Body"], extras: { kiPoints: 15, martialArtsDie: "d8" } },
-    { level: 16, features: ["Feat"], extras: { kiPoints: 16, martialArtsDie: "d8" } },
-    { level: 17, features: ["Monastic Tradition Feature", "Quivering Palm", "Unarmored Movement (+30 ft)"], extras: { kiPoints: 17, martialArtsDie: "d10" } },
-    { level: 18, features: ["Empty Body"], extras: { kiPoints: 18, martialArtsDie: "d10" } },
-    { level: 19, features: ["Inner Sanctum"], extras: { kiPoints: 19, martialArtsDie: "d10" } },
-    { level: 20, features: ["Perfect Self", "Feat"], extras: { kiPoints: 20, martialArtsDie: "d10" } },
+    {
+      level: 1,
+      features: [
+        {
+          level: 1,
+          name: "Martial Arts",
+          description:
+            "Your practiced technique lets you fight with deadly grace using unarmed strikes and monk weapons (simple melee weapons that lack the two-handed or heavy property). While unarmored and not wielding a shield, you can use Dexterity instead of Strength for the attack and damage rolls of these attacks, you roll your Martial Arts die in place of the normal damage, and when you take the Attack action you can make one unarmed strike as a bonus action.",
+        },
+        {
+          level: 1,
+          name: "Unarmored Defense",
+          description:
+            "While you wear no armor and wield no shield, your Armor Class equals 10 + your Dexterity modifier + your Wisdom modifier.",
+        },
+      ],
+      extras: { kiPoints: 0, martialArtsDie: "d4" },
+    },
+    {
+      level: 2,
+      features: [
+        {
+          level: 2,
+          name: "Ki",
+          description:
+            "You gain a pool of ki points (shown in the Ki Points column) that fuel special techniques and refresh on a short or long rest. You start with three: Flurry of Blows (spend 1 ki after the Attack action to make two unarmed strikes as a bonus action), Patient Defense (spend 1 ki to Dodge as a bonus action), and Step of the Wind (spend 1 ki to Dash or Disengage as a bonus action and double your jump distance for the turn). Ki save DC = 8 + your proficiency bonus + your Wisdom modifier.",
+        },
+        {
+          level: 2,
+          name: "Unarmored Movement",
+          description:
+            "Your speed increases by 10 feet while you are not wearing armor or wielding a shield. This bonus increases as you gain monk levels, reaching +30 feet at level 18.",
+        },
+      ],
+      extras: { kiPoints: 2, martialArtsDie: "d4" },
+    },
+    {
+      level: 3,
+      features: [
+        { level: 3, name: "Monastic Tradition Feature", description: "You gain a feature from your chosen Monastic Tradition." },
+        {
+          level: 3,
+          name: "Deflect Missiles",
+          description:
+            "You can use your reaction to deflect or catch a ranged weapon attack when you are hit by one, reducing its damage by 1d10 + your Dexterity modifier + your monk level. If you reduce the damage to 0, you can catch the missile and spend 1 ki point to make a ranged attack with it as part of the same reaction.",
+        },
+      ],
+      extras: { kiPoints: 3, martialArtsDie: "d4" },
+    },
+    {
+      level: 4,
+      features: [
+        {
+          level: 4,
+          name: "Slow Fall",
+          description:
+            "You can use your reaction when you fall to reduce any falling damage you take by an amount equal to five times your monk level.",
+        },
+      ],
+      extras: { kiPoints: 4, martialArtsDie: "d4" },
+    },
+    {
+      level: 5,
+      features: [
+        {
+          level: 5,
+          name: "Extra Attack",
+          description:
+            "You can attack twice, instead of once, whenever you take the Attack action on your turn.",
+        },
+        {
+          level: 5,
+          name: "Stunning Strike",
+          description:
+            "When you hit another creature with a melee weapon attack, you can spend 1 ki point to attempt a stunning strike. The target must succeed on a Constitution saving throw or be stunned until the end of your next turn.",
+        },
+      ],
+      extras: { kiPoints: 5, martialArtsDie: "d6" },
+    },
+    {
+      level: 6,
+      features: [
+        {
+          level: 6,
+          name: "Ki-Empowered Strikes",
+          description:
+            "Your unarmed strikes count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.",
+        },
+      ],
+      extras: { kiPoints: 6, martialArtsDie: "d6" },
+    },
+    {
+      level: 7,
+      features: [
+        { level: 7, name: "Monastic Tradition Feature", description: "You gain a feature from your chosen Monastic Tradition." },
+        {
+          level: 7,
+          name: "Evasion",
+          description:
+            "When you are subjected to an effect that allows a Dexterity saving throw to take only half damage, you instead take no damage on a success and only half damage on a failure.",
+        },
+      ],
+      extras: { kiPoints: 7, martialArtsDie: "d6" },
+    },
+    {
+      level: 8,
+      features: [
+        {
+          level: 8,
+          name: "Stillness of Mind",
+          description:
+            "You can use your action to end one effect on yourself that is causing you to be charmed or frightened.",
+        },
+      ],
+      extras: { kiPoints: 8, martialArtsDie: "d6" },
+    },
+    {
+      level: 9,
+      features: [
+        {
+          level: 9,
+          name: "Wall Runner",
+          description:
+            "Your Unarmored Movement lets you move along vertical surfaces and across liquids on your turn without falling during the move.",
+        },
+      ],
+      extras: { kiPoints: 9, martialArtsDie: "d6" },
+    },
+    {
+      level: 10,
+      features: [
+        {
+          level: 10,
+          name: "Purity of Body",
+          description:
+            "Your mastery of ki makes you immune to disease and poison.",
+        },
+      ],
+      extras: { kiPoints: 10, martialArtsDie: "d6" },
+    },
+    {
+      level: 11,
+      features: [
+        {
+          level: 11,
+          name: "Flurry of Perfection",
+          description:
+            "When you use Flurry of Blows, you can make three unarmed strikes instead of two. If any of these strikes hit the same creature, the third strike deals additional damage equal to your Martial Arts die.",
+        },
+      ],
+      extras: { kiPoints: 11, martialArtsDie: "d8" },
+    },
+    {
+      level: 12,
+      features: [
+        {
+          level: 12,
+          name: "Tongue of Sun and Moon",
+          description:
+            "You learn to touch the ki of other minds so that you understand all spoken languages. Moreover, any creature that can understand a language can understand what you say.",
+        },
+      ],
+      extras: { kiPoints: 12, martialArtsDie: "d8" },
+    },
+    {
+      level: 13,
+      features: [
+        { level: 13, name: "Monastic Tradition Feature", description: "You gain a feature from your chosen Monastic Tradition." },
+        {
+          level: 13,
+          name: "Diamond Soul",
+          description:
+            "You gain proficiency in all saving throws. Additionally, when you fail a saving throw, you can spend 1 ki point to reroll it and take the second result.",
+        },
+      ],
+      extras: { kiPoints: 13, martialArtsDie: "d8" },
+    },
+    {
+      level: 14,
+      features: [
+        {
+          level: 14,
+          name: "Empty Body",
+          description:
+            "You can spend 4 ki points as an action to become invisible for 1 minute, gaining resistance to all damage except force damage for the duration.",
+        },
+      ],
+      extras: { kiPoints: 14, martialArtsDie: "d8" },
+    },
+    {
+      level: 15,
+      features: [
+        {
+          level: 15,
+          name: "Timeless Body",
+          description:
+            "Your ki sustains you so that you suffer none of the frailty of old age, and you can't be aged magically. You still die of extreme old age, but you no longer need food or water.",
+        },
+      ],
+      extras: { kiPoints: 15, martialArtsDie: "d8" },
+    },
+    {
+      level: 16,
+      features: [
+        {
+          level: 16,
+          name: "Rushing Onslaught",
+          description:
+            "When you use Step of the Wind, you can make one unarmed strike as part of the same bonus action. If it hits, the target's speed is reduced to 0 until the end of its next turn.",
+        },
+      ],
+      extras: { kiPoints: 16, martialArtsDie: "d8" },
+    },
+    {
+      level: 17,
+      features: [
+        { level: 17, name: "Monastic Tradition Feature", description: "You gain a feature from your chosen Monastic Tradition." },
+        {
+          level: 17,
+          name: "Ki Overflow",
+          description:
+            "When you roll initiative and have no ki points remaining, you regain 4 ki points.",
+        },
+      ],
+      extras: { kiPoints: 17, martialArtsDie: "d10" },
+    },
+    {
+      level: 18,
+      features: [
+        {
+          level: 18,
+          name: "Perfect Movement",
+          description:
+            "Your Unarmored Movement bonus reaches +30 feet, and you have a flying speed equal to your walking speed whenever you begin and end your turn on a solid surface.",
+        },
+      ],
+      extras: { kiPoints: 18, martialArtsDie: "d10" },
+    },
+    {
+      level: 19,
+      features: [
+        {
+          level: 19,
+          name: "Perfect Self",
+          description:
+            "Your body and ki are one. Your unarmed strikes deal an additional die of Martial Arts damage, and when you use Stunning Strike, a creature that succeeds on its save is still incapacitated until the end of its current turn. Whenever you spend ki, you can treat one such expenditure per turn as if it cost 1 fewer ki point (minimum 0).",
+        },
+      ],
+      extras: { kiPoints: 19, martialArtsDie: "d10" },
+    },
+    {
+      level: 20,
+      features: [
+        {
+          level: 20,
+          name: "Body and Soul",
+          description:
+            "When you roll initiative and have no ki points remaining, you regain all expended ki points. In addition, your maximum ki pool has no upper bound imposed by your level, and your Martial Arts die increases to a d12.",
+        },
+      ],
+      extras: { kiPoints: 20, martialArtsDie: "d10" },
+    },
   ],
   choiceLevel: 3,
   subclasses: [
@@ -64,8 +306,8 @@ export const monk: CharacterClass = {
           name: "Quivering Palm",
           description:
             "When you hit a creature with an unarmed strike, you can spend 3 ki points to start imperceptible vibrations in the creature's body. The vibrations are harmless unless you use your action to end them. When you do, the creature must make a Constitution saving throw. It takes 10d10 necrotic damage on a failed save, or half on a success. You can only maintain one instance of this feature at a time.",
-        },
-      ],
+        }
+      ]
     },
     {
       slug: "way-of-shadow",
@@ -102,8 +344,8 @@ export const monk: CharacterClass = {
           name: "Living Shadow",
           description:
             "You can spend 4 ki points as a bonus action to step into the Plane of Shadow. Until the start of your next turn, you are immune to all damage and conditions, you cannot be targeted by spells or attacks, and you can observe your surroundings normally. At the start of your next turn you re-emerge in any unoccupied space within 30 feet that you could see before you entered.",
-        },
-      ],
+        }
+      ]
     },
     {
       slug: "way-of-the-four-elements",
@@ -134,8 +376,8 @@ export const monk: CharacterClass = {
           name: "Eternal Mountain Defense",
           description:
             "You can spend 5 ki points to cast stoneskin on yourself, without material components, lasting 1 hour or until you end it as a bonus action.",
-        },
-      ],
+        }
+      ]
     },
     {
       slug: "way-of-the-drunken-master",
@@ -172,16 +414,18 @@ export const monk: CharacterClass = {
           name: "Stumbling Perfection",
           description:
             "Your unpredictable movement becomes impossible to track. You have advantage on all Dexterity saving throws. Additionally, opportunity attacks against you have disadvantage.",
-        },
-      ],
+        }
+      ]
     },
   ],
   expertise: {
     exploration: [
-      "when moving silently, scaling surfaces, or passing through hostile territory undetected",
+      "When crossing treacherous terrain through agility, balance, or acrobatics",
+      "When enduring physical hardship through disciplined control of the body",
     ],
     social: [
-      "when meditating on a problem or sensing deception through calm observation",
+      "When maintaining composure under pressure or provocation",
+      "When observing the subtle tells and intentions of others",
     ],
   },
   spellcasting: "none",

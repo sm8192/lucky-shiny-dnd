@@ -4,34 +4,252 @@ export const bard: CharacterClass = {
   slug: "bard",
   name: "Bard",
   description:
-    "Whether through song, oration, or sheer force of personality, bards weave magic into every performance. They are the world's most versatile adventurers — part spellcaster, part face, part jack-of-all-trades — capable of lifting allies with an inspiring word or unraveling enemies with a well-placed insult.",
-  hitDie: "d8",
+    "Whether through song, oration, or sheer force of personality, bards weave magic into every performance. They are versatile adventurers —  spellcaster,  face, and factotum — capable of lifting allies with an inspiring word or unraveling enemies with a well-placed insult.",
+  hitDie: "d6",
   savingThrow: "Will",
   armorProficiency: "light",
   weaponProficiency: "simple",
   shieldProficiency: false,
   perception: "1",
   levels: [
-    { level: 1, features: ["Spellcasting", "Bardic Inspiration"], extras: { inspirationDie: "d6" } },
-    { level: 2, features: ["Jack of All Trades", "Song of Rest (d6)"], extras: { inspirationDie: "d6" } },
-    { level: 3, features: ["Bard College", "Expertise"], extras: { inspirationDie: "d6" } },
-    { level: 4, features: ["Feat"], extras: { inspirationDie: "d6" } },
-    { level: 5, features: ["Bardic Inspiration (d8)", "Font of Inspiration"], extras: { inspirationDie: "d8" } },
-    { level: 6, features: ["Bard College Feature", "Countercharm"], extras: { inspirationDie: "d8" } },
-    { level: 7, features: [], extras: { inspirationDie: "d8" } },
-    { level: 8, features: ["Feat"], extras: { inspirationDie: "d8" } },
-    { level: 9, features: ["Song of Rest (d8)"], extras: { inspirationDie: "d8" } },
-    { level: 10, features: ["Bardic Inspiration (d10)", "Expertise", "Magical Secrets"], extras: { inspirationDie: "d10" } },
-    { level: 11, features: ["Greater Inspiration"], extras: { inspirationDie: "d10" } },
-    { level: 12, features: ["Feat"], extras: { inspirationDie: "d10" } },
-    { level: 13, features: ["Song of Rest (d10)"], extras: { inspirationDie: "d10" } },
-    { level: 14, features: ["Bard College Feature", "Magical Secrets"], extras: { inspirationDie: "d10" } },
-    { level: 15, features: ["Bardic Inspiration (d12)"], extras: { inspirationDie: "d12" } },
-    { level: 16, features: ["Feat"], extras: { inspirationDie: "d12" } },
-    { level: 17, features: ["Song of Rest (d12)"], extras: { inspirationDie: "d12" } },
-    { level: 18, features: ["Magical Secrets"], extras: { inspirationDie: "d12" } },
-    { level: 19, features: ["Bard College Feature"], extras: { inspirationDie: "d12" } },
-    { level: 20, features: ["Superior Inspiration", "Feat"], extras: { inspirationDie: "d12" } },
+    {
+      level: 1,
+      features: [
+        {
+          level: 1,
+          name: "Bardic Inspiration",
+          description:
+            "As a bonus action, you can give one creature other than yourself within 60 feet a Bardic Inspiration die (shown in the Inspiration Die column). Within the next 10 minutes, the creature can add that die to one ability check, attack roll, or saving throw it makes, deciding to do so after seeing the roll but before knowing the outcome. You can use this a number of times equal to your Charisma modifier (minimum once) per long rest.",
+        },
+        {
+          level: 1,
+          name: "Spellcasting",
+          description:
+            "You have learned to weave magic through your performances, casting bard spells drawn from a broad and flexible repertoire. Charisma is your spellcasting ability, and you cast using the full-caster spell slots shown on the class progression table.",
+        },
+      ],
+      extras: { inspirationDie: "d6" },
+    },
+    {
+      level: 2,
+      features: [
+        {
+          level: 2,
+          name: "Jack of All Trades",
+          description:
+            "You can add half your proficiency bonus (rounded down) to any ability check you make that doesn't already include your proficiency bonus.",
+        },
+        {
+          level: 2,
+          name: "Song of Rest",
+          description:
+            "During a short rest, if you or any friendly creatures who can hear your performance regain hit points by spending Hit Dice, each of those creatures regains an extra 1d6 hit points. The bonus die increases as you gain levels, reaching 1d12 at level 17.",
+        },
+      ],
+      extras: { inspirationDie: "d6" },
+    },
+    {
+      level: 3,
+      features: [
+        { level: 3, name: "Bard College Feature", description: "You gain a feature from your chosen Bard College." },
+        {
+          level: 3,
+          name: "Expertise",
+          description:
+            "Choose two of your skill proficiencies. Your proficiency bonus is doubled for any ability check you make using either. You choose two more at level 10.",
+        },
+      ],
+      extras: { inspirationDie: "d6" },
+    },
+    {
+      level: 4,
+      features: [
+        {
+          level: 4,
+          name: "Versatile Talent",
+          description:
+            "You learn one cantrip of your choice from any spell list; it counts as a bard cantrip for you and doesn't count against the number of cantrips you know.",
+        },
+      ],
+      extras: { inspirationDie: "d6" },
+    },
+    {
+      level: 5,
+      features: [
+        {
+          level: 5,
+          name: "Font of Inspiration",
+          description:
+            "You regain all expended uses of Bardic Inspiration when you finish a short or long rest, rather than only on a long rest.",
+        },
+      ],
+      extras: { inspirationDie: "d8" },
+    },
+    {
+      level: 6,
+      features: [
+        {
+          level: 6,
+          name: "Countercharm",
+          description:
+            "As an action, you can start a performance that lasts until the end of your next turn. During that time, you and any friendly creatures within 30 feet of you have advantage on saving throws against being frightened or charmed.",
+        },
+      ],
+      extras: { inspirationDie: "d8" },
+    },
+    {
+      level: 7,
+      features: [
+        { level: 7, name: "Bard College Feature", description: "You gain a feature from your chosen Bard College." },
+      ],
+      extras: { inspirationDie: "d8" },
+    },
+    {
+      level: 8,
+      features: [
+        {
+          level: 8,
+          name: "Rallying Cadence",
+          description:
+            "When a creature uses a Bardic Inspiration die you gave it, in addition to the die's normal effect, that creature gains temporary hit points equal to your Charisma modifier.",
+        },
+      ],
+      extras: { inspirationDie: "d8" },
+    },
+    {
+      level: 9,
+      features: [
+        {
+          level: 9,
+          name: "Magical Secrets",
+          description:
+            "Your studies unlock the secrets of magic beyond your own tradition. You learn two spells of your choice from any class's spell list. They count as bard spells for you but don't count against your number of spells known. You learn two more at levels 13 and 17.",
+        },
+      ],
+      extras: { inspirationDie: "d8" },
+    },
+    {
+      level: 10,
+      features: [
+        {
+          level: 10,
+          name: "Expertise (2)",
+          description:
+            "Choose two more of your skill proficiencies to gain the doubled proficiency bonus of Expertise.",
+        },
+      ],
+      extras: { inspirationDie: "d10" },
+    },
+    {
+      level: 11,
+      features: [
+        {
+          level: 11,
+          name: "Resonant Inspiration",
+          description:
+            "Your inspiration rings with lasting power. When a creature rolls a Bardic Inspiration die from you, it can roll the die twice and use either result. Additionally, an unused die now lasts until your next long rest instead of 10 minutes.",
+        },
+      ],
+      extras: { inspirationDie: "d10" },
+    },
+    {
+      level: 12,
+      features: [
+        {
+          level: 12,
+          name: "Inspiring Leader",
+          description:
+            "When you finish a short or long rest, you can grant temporary hit points equal to your bard level + your Charisma modifier to up to six allies who can hear you.",
+        },
+      ],
+      extras: { inspirationDie: "d10" },
+    },
+    {
+      level: 13,
+      features: [
+        { level: 13, name: "Bard College Feature", description: "You gain a feature from your chosen Bard College." },
+      ],
+      extras: { inspirationDie: "d10" },
+    },
+    {
+      level: 14,
+      features: [
+        {
+          level: 14,
+          name: "Magical Secrets (2)",
+          description:
+            "You learn two more spells of your choice from any class's spell list, following the rules of Magical Secrets.",
+        },
+      ],
+      extras: { inspirationDie: "d10" },
+    },
+    {
+      level: 15,
+      features: [
+        {
+          level: 15,
+          name: "Peerless Performer",
+          description:
+            "When you roll initiative and have no uses of Bardic Inspiration left, you regain one use. In addition, you can use Bardic Inspiration on yourself.",
+        },
+      ],
+      extras: { inspirationDie: "d12" },
+    },
+    {
+      level: 16,
+      features: [
+        {
+          level: 16,
+          name: "Cutting Refrain",
+          description:
+            "As a reaction when a creature within 60 feet makes an attack roll or saving throw, you can expend a use of Bardic Inspiration to subtract the die's roll from that creature's roll.",
+        },
+      ],
+      extras: { inspirationDie: "d12" },
+    },
+    {
+      level: 17,
+      features: [
+        { level: 17, name: "Bard College Feature", description: "You gain a feature from your chosen Bard College." },
+      ],
+      extras: { inspirationDie: "d12" },
+    },
+    {
+      level: 18,
+      features: [
+        {
+          level: 18,
+          name: "Magical Secrets (3)",
+          description:
+            "You learn two more spells of your choice from any class's spell list, following the rules of Magical Secrets.",
+        },
+      ],
+      extras: { inspirationDie: "d12" },
+    },
+    {
+      level: 19,
+      features: [
+        {
+          level: 19,
+          name: "Masterpiece",
+          description:
+            "Your artistry reaches transcendent heights. When you use Bardic Inspiration, you can grant the die to every friendly creature of your choice within 60 feet at once, expending only a single use. Additionally, once per long rest you can cast one bard spell of 5th level or lower without expending a spell slot.",
+        },
+      ],
+      extras: { inspirationDie: "d12" },
+    },
+    {
+      level: 20,
+      features: [
+        {
+          level: 20,
+          name: "Superior Inspiration",
+          description:
+            "When you roll initiative and have no uses of Bardic Inspiration left, you regain two. Whenever a creature rolls a Bardic Inspiration die from you and the roll is the die's lowest possible result, that use is not expended.",
+        },
+      ],
+      extras: { inspirationDie: "d12" },
+    },
   ],
   choiceLevel: 3,
   subclasses: [
@@ -70,8 +288,8 @@ export const bard: CharacterClass = {
           name: "Unending Inspiration",
           description:
             "When a creature uses one of your Bardic Inspiration dice, you immediately regain one expended use of Bardic Inspiration.",
-        },
-      ],
+        }
+      ]
     },
     {
       slug: "college-of-valor",
@@ -108,8 +326,8 @@ export const bard: CharacterClass = {
           name: "Master's Flourish",
           description:
             "When you use Combat Inspiration and the roll would add to damage, the target of the attack must succeed on a Constitution saving throw (DC = 8 + your proficiency bonus + your Charisma modifier) or become stunned until the end of its next turn.",
-        },
-      ],
+        }
+      ]
     },
     {
       slug: "college-of-glamour",
@@ -146,8 +364,8 @@ export const bard: CharacterClass = {
           name: "Crown of Stars",
           description:
             "Your Mantle of Inspiration now also causes each affected creature to emit dim light in a 5-foot radius for the duration, and any creature that hits them with a melee attack takes radiant damage equal to your Bardic Inspiration die.",
-        },
-      ],
+        }
+      ]
     },
     {
       slug: "college-of-whispers",
@@ -184,17 +402,18 @@ export const bard: CharacterClass = {
           name: "Dark Revelation",
           description:
             "Your Psychic Blades now deal damage equal to two Bardic Inspiration dice instead of one, and the frightened condition from Psychic Blades lasts until the end of the target's next turn without a saving throw.",
-        },
-      ],
-    },
+        }
+      ]
+    }
   ],
   expertise: {
     exploration: [
-      "when gathering information about a location, organization, or historical event",
+      "When gathering information about a location, organization, or historical event",
+      "When recalling obscure lore or piecing together fragments of knowledge",
     ],
     social: [
-      "when performing, persuading, or deceiving in social situations",
-      "when dealing with nobility, courts, or formal institutions",
+      "When entertaining or manipulating a crowd",
+      "When making a positive impression on a stranger"
     ],
   },
   spellcasting: "full",

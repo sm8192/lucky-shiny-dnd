@@ -5,8 +5,8 @@ export const sorcerer: CharacterClass = {
   name: "Sorcerer",
   description:
     "Magic is not something sorcerers learn — it is something they are. Raw arcane power flows through their blood, shaped by a supernatural origin rather than academic study. Sorcerers wield fewer spells than wizards but bend them further, spending Sorcery Points to twist, amplify, or multiply their magic in ways no textbook could anticipate.",
-  hitDie: "d6",
-  savingThrow: "Will",
+  hitDie: "d8",
+  savingThrow: "Fortitude",
   armorProficiency: "none",
   weaponProficiency: "simple",
   shieldProficiency: false,
@@ -15,35 +15,236 @@ export const sorcerer: CharacterClass = {
   choiceLevel: 1,
   expertise: {
     exploration: [
-      "When identifying or interacting with magical phenomena, objects, or creatures",
+      "When sensing or unraveling ambient magic through instinct rather than study",
       "When pushing through hostile magical environments using sheer force of will",
     ],
     social: [
       "When projecting authority or presence through visible displays of power",
       "When intimidating or impressing creatures sensitive to magical auras",
-    ],
+    ]
   },
   levels: [
-    { level: 1,  features: ["Spellcasting", "Sorcerous Origin", "Archetype Feature"], extras: { "Sorcery Points": 0 } },
-    { level: 2,  features: ["Font of Magic"], extras: { "Sorcery Points": 2 } },
-    { level: 3,  features: ["Metamagic (×2)"], extras: { "Sorcery Points": 3 } },
-    { level: 4,  features: [], extras: { "Sorcery Points": 4 } },
-    { level: 5,  features: ["Archetype Feature", "Sorcery Point Surge"], extras: { "Sorcery Points": 5 } },
-    { level: 6,  features: [], extras: { "Sorcery Points": 6 } },
-    { level: 7,  features: [], extras: { "Sorcery Points": 7 } },
-    { level: 8,  features: [], extras: { "Sorcery Points": 8 } },
-    { level: 9,  features: ["Archetype Feature"], extras: { "Sorcery Points": 9 } },
-    { level: 10, features: ["Metamagic (×3)"], extras: { "Sorcery Points": 10 } },
-    { level: 11, features: ["Overchannel"], extras: { "Sorcery Points": 11 } },
-    { level: 12, features: [], extras: { "Sorcery Points": 12 } },
-    { level: 13, features: [], extras: { "Sorcery Points": 13 } },
-    { level: 14, features: [], extras: { "Sorcery Points": 14 } },
-    { level: 15, features: ["Archetype Feature"], extras: { "Sorcery Points": 15 } },
-    { level: 16, features: [], extras: { "Sorcery Points": 16 } },
-    { level: 17, features: ["Metamagic (×4)"], extras: { "Sorcery Points": 17 } },
-    { level: 18, features: [], extras: { "Sorcery Points": 18 } },
-    { level: 19, features: ["Archetype Feature", "Arcane Apotheosis"], extras: { "Sorcery Points": 19 } },
-    { level: 20, features: ["Sorcerous Restoration"], extras: { "Sorcery Points": 20 } },
+    {
+      level: 1,
+      features: [
+        {
+          level: 1,
+          name: "Innate Spellcasting",
+          description:
+            "You cast sorcerer spells drawn from an innate wellspring of magic, using Charisma as your spellcasting ability. You know a fixed set of spells rather than preparing them, and you cast using the full-caster spell slots shown on the class progression table.",
+        },
+        { level: 1, name: "Sorcerous Origin Feature", description: "You gain a feature from your chosen Sorcerous Origin." },
+      ],
+      extras: { "Sorcery Points": 0 },
+    },
+    {
+      level: 2,
+      features: [
+        {
+          level: 2,
+          name: "Font of Magic",
+          description:
+            "You gain a pool of Sorcery Points (shown in the Sorcery Points column) that refreshes on a long rest. As a bonus action, you can convert Sorcery Points into spell slots or convert unused spell slots back into Sorcery Points, giving you flexible control over your magical resources.",
+        },
+      ],
+      extras: { "Sorcery Points": 2 },
+    },
+    {
+      level: 3,
+      features: [
+        {
+          level: 3,
+          name: "Metamagic",
+          description:
+            "You gain the ability to twist your spells using Sorcery Points. You learn two Metamagic options — such as Twinned Spell, Quickened Spell, Careful Spell, or Distant Spell — and can use only one on a given spell unless noted otherwise. You learn additional options at levels 10 and 17.",
+        },
+      ],
+      extras: { "Sorcery Points": 3 },
+    },
+    {
+      level: 4,
+      features: [
+        {
+          level: 4,
+          name: "Sculpted Magic",
+          description:
+            "Your fine control over raw magic grows. When you cast a sorcerer cantrip, you can spend 1 Sorcery Point to have it ignore half cover and three-quarters cover against its targets.",
+        },
+      ],
+      extras: { "Sorcery Points": 4 },
+    },
+    {
+      level: 5,
+      features: [
+        { level: 5, name: "Sorcerous Origin Feature", description: "You gain a feature from your chosen Sorcerous Origin." },
+      ],
+      extras: { "Sorcery Points": 5 },
+    },
+    {
+      level: 6,
+      features: [
+        {
+          level: 6,
+          name: "Font of Power",
+          description:
+            "Your reservoir of magic deepens. When you roll initiative and have no Sorcery Points remaining, you regain 2 of them, and the cost to create spell slots from Sorcery Points is reduced by 1 (minimum 2).",
+        },
+      ],
+      extras: { "Sorcery Points": 6 },
+    },
+    {
+      level: 7,
+      features: [
+        {
+          level: 7,
+          name: "Surging Magic",
+          description:
+            "Once per turn when you cast a sorcerer spell of 1st level or higher that deals damage, you can add your Charisma modifier to one damage roll of that spell.",
+        },
+      ],
+      extras: { "Sorcery Points": 7 },
+    },
+    {
+      level: 8,
+      features: [
+        {
+          level: 8,
+          name: "Arcane Resilience",
+          description:
+            "Your body adapts to the magic within it. Your hit point maximum increases by an amount equal to your sorcerer level, and you have advantage on Constitution saving throws made to maintain concentration on a spell.",
+        },
+      ],
+      extras: { "Sorcery Points": 8 },
+    },
+    {
+      level: 9,
+      features: [
+        { level: 9, name: "Sorcerous Origin Feature", description: "You gain a feature from your chosen Sorcerous Origin." },
+      ],
+      extras: { "Sorcery Points": 9 },
+    },
+    {
+      level: 10,
+      features: [
+        {
+          level: 10,
+          name: "Metamagic Adept",
+          description:
+            "You learn an additional Metamagic option, and you can apply two different Metamagic options to a single spell as long as you pay both costs.",
+        },
+      ],
+      extras: { "Sorcery Points": 10 },
+    },
+    {
+      level: 11,
+      features: [
+        {
+          level: 11,
+          name: "Overflowing Magic",
+          description:
+            "Your power spills over its limits. When you cast a sorcerer spell using a spell slot of 5th level or higher, you regain 1 Sorcery Point. In addition, once per turn you can spend 3 Sorcery Points to reroll all the damage dice of a spell and use the higher total.",
+        },
+      ],
+      extras: { "Sorcery Points": 11 },
+    },
+    {
+      level: 12,
+      features: [
+        {
+          level: 12,
+          name: "Careful Casting",
+          description:
+            "When you cast a spell that forces creatures to make a saving throw, you can spend 1 Sorcery Point to grant one creature of your choice automatic success on that save, protecting an ally from your own magic.",
+        },
+      ],
+      extras: { "Sorcery Points": 12 },
+    },
+    {
+      level: 13,
+      features: [
+        {
+          level: 13,
+          name: "Empowered Origin",
+          description:
+            "The magic of your origin intensifies. Whenever you spend Sorcery Points on Metamagic, you can reduce the total cost by 1 (minimum 1) once per turn.",
+        },
+      ],
+      extras: { "Sorcery Points": 13 },
+    },
+    {
+      level: 14,
+      features: [
+        {
+          level: 14,
+          name: "Arcane Ward",
+          description:
+            "As a reaction when you take damage, you can spend 2 Sorcery Points to gain resistance to that damage instance and to all damage of the same type until the start of your next turn.",
+        },
+      ],
+      extras: { "Sorcery Points": 14 },
+    },
+    {
+      level: 15,
+      features: [
+        { level: 15, name: "Sorcerous Origin Feature", description: "You gain a feature from your chosen Sorcerous Origin." },
+      ],
+      extras: { "Sorcery Points": 15 },
+    },
+    {
+      level: 16,
+      features: [
+        {
+          level: 16,
+          name: "Font of Renewal",
+          description:
+            "When you finish a short rest, you can regain a number of expended Sorcery Points equal to half your sorcerer level (rounded down). Once you use this feature, you must finish a long rest to use it again.",
+        },
+      ],
+      extras: { "Sorcery Points": 16 },
+    },
+    {
+      level: 17,
+      features: [
+        {
+          level: 17,
+          name: "Metamagic Mastery",
+          description:
+            "You learn a final Metamagic option, and you can apply any number of Metamagic options to a single spell, provided you pay each of their costs.",
+        },
+      ],
+      extras: { "Sorcery Points": 17 },
+    },
+    {
+      level: 18,
+      features: [
+        {
+          level: 18,
+          name: "Torrent of Magic",
+          description:
+            "Once per long rest, you can enter a state of magical overflow for 1 minute. While it lasts, your Metamagic options cost 1 fewer Sorcery Point each (minimum 0), and you regain 1 Sorcery Point at the start of each of your turns.",
+        },
+      ],
+      extras: { "Sorcery Points": 18 },
+    },
+    {
+      level: 19,
+      features: [
+        { level: 19, name: "Sorcerous Origin Feature", description: "You gain a feature from your chosen Sorcerous Origin." },
+      ],
+      extras: { "Sorcery Points": 19 },
+    },
+    {
+      level: 20,
+      features: [
+        {
+          level: 20,
+          name: "Sorcerous Restoration",
+          description:
+            "Your innate magic becomes nearly inexhaustible. When you roll initiative, you regain all expended Sorcery Points, and you can hold a number of Sorcery Points up to twice your sorcerer level.",
+        },
+      ],
+      extras: { "Sorcery Points": 20 },
+    },
   ],
   subclasses: [
     {
@@ -87,8 +288,8 @@ export const sorcerer: CharacterClass = {
           name: "Ascended Dragon",
           description:
             "Your draconic blood reaches its apex. You permanently gain resistance to the damage type of your dragon ancestor. Additionally, you can spend 8 sorcery points to transform into a Large dragon form for 1 minute as a bonus action. While transformed, you gain a natural weapon bite attack that deals 2d10 damage of your ancestry type, your AC increases by 2, and you gain blindsight out to 30 feet.",
-        },
-      ],
+        }
+      ]
     },
     {
       slug: "wild-magic",
@@ -131,8 +332,8 @@ export const sorcerer: CharacterClass = {
           name: "Chaos Incarnate",
           description:
             "You become a living conduit for wild magic. Once per long rest, when you roll on the Wild Magic Surge table, you can choose the result instead of rolling randomly. Additionally, once per short rest, you can release a burst of wild energy as a bonus action: all creatures within 10 feet must make a Dexterity saving throw against your spell save DC or take 4d8 force damage, while you regain 4 sorcery points.",
-        },
-      ],
+        }
+      ]
     },
     {
       slug: "shadow-magic",
@@ -175,8 +376,8 @@ export const sorcerer: CharacterClass = {
           name: "One With Shadow",
           description:
             "While in dim light or darkness, you can become invisible as a bonus action. This invisibility lasts until you move, take an action or reaction, or a bright light shines on you. While invisible this way, you also become insubstantial — you have resistance to all damage and can move through objects and creatures as if they were difficult terrain.",
-        },
-      ],
+        }
+      ]
     },
     {
       slug: "divine-soul",
@@ -219,8 +420,8 @@ export const sorcerer: CharacterClass = {
           name: "Divine Ascendancy",
           description:
             "You have become an avatar of your divine patron's will. Once per long rest, you can cast any cleric spell of 8th level or lower without expending a spell slot. Additionally, while you have at least 1 sorcery point, friendly creatures within 30 feet of you have advantage on death saving throws.",
-        },
-      ],
-    },
-  ],
+        }
+      ]
+    }
+  ]
 };

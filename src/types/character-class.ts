@@ -23,9 +23,15 @@ export type WeaponProficiency = "simple" | "martial";
 
 export type spellcastingProgression = "none" | "half" | "full" | "pact";
 
+export interface Feature {
+  level: number;
+  name: string;
+  description: string;
+}
+
 export interface ClassLevel {
   level: number;
-  features: string[];
+  features: Feature[];
   extras?: Record<string, number | string>;
 }
 
@@ -34,11 +40,7 @@ export interface Subclass {
   slug: string;
   name: string;
   description: string;
-  features: {
-    level: number;
-    name: string;
-    description: string;
-  }[];
+  features: Feature[];
 }
 
 export interface Expertise {

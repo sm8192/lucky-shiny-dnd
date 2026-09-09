@@ -192,7 +192,7 @@ function LevelRow({
         +{Math.ceil(row.level / 4) + 1}
       </td>
       <td className="px-2 py-1.5 text-stone-600 dark:text-stone-400">
-        {row.features.length > 0 ? row.features.join(", ") : "—"}
+        {row.features.length > 0 ? row.features.map((f) => f.name).join(", ") : "—"}
       </td>
       {slotLevels.map((sl) => (
         <td

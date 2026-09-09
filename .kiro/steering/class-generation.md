@@ -34,7 +34,7 @@ Key fields:
 | `levels` | Exactly 20 entries, one per level. See Progression Rules below. |
 | `choiceLevel` | Determines at which level characters of that class choose their subclass, which impacts the number and levels of subclass features.|
 | `subclasses` | At least 4. See Subclass Rules below. |
-| `expertise` | Each class has two categories of expertise: exploration and social. These represent situations in which characters of that class are expected to excel, and take the form of a "when" condition that describes the situation.|
+| `expertise` | Each class has two categories of expertise: exploration and social. These represent situations in which characters of that class are expected to excel, and take the form of a "when" condition that describes the situation. Each class should have two conditions each for exploration and social expertise.|
 | `spellcasting` | This field is "none" for non-casting classes,  "half" for classes that mix martial weaponry and spellcasting, and either "full" or "pact" for classes that rely primarily on spellcasting. Spellcasters with "pact" are unusual casters with a different approach to magic.|
 
 
@@ -56,6 +56,9 @@ The proficiency bonus follows this fixed schedule — never deviate from it:
 
 Characters select two eligible feats at level 1, and then choose additional feats at levels 4, 8, 12, and 16. At level 20, characters may choose either a normal feat or a special 'Capstone' feat.
 
+### Class Features
+- Every class feature has a name and a description.
+
 ### Feature Density
 
 - Level 1 must have at least 2 features (the class identity should be playable immediately).
@@ -71,7 +74,7 @@ Characters select two eligible feats at level 1, and then choose additional feat
 - Classes with a choiceLevel 1 have subclass features at levels 1, 5, 9, 11, 15, and 19.
 - Classes with a choiceLevel 2 have subclass features at levels 2, 6, 10, 14, and 18.
 - Classes with a choiceLevel 3 have subclass features at levels 3, 7, 13, and 17.
-- Reference the subclass feature in the `levels` array as `"<SubclassName> Feature"` or the generic `"<ArchetypeName> Feature"` if the subclass isn't chosen yet.
+- Reference the subclass feature in the `levels` array as the generic `"<ArchetypeName> Feature"`.
 
 ### Other Features
 
@@ -80,7 +83,7 @@ Characters select two eligible feats at level 1, and then choose additional feat
 
 ## Subclass Rules
 
-- Each subclass must have a `slug` (kebab-case), `name` (title-case),  `description` (2–3 sentences), and at least 4 `features`.
+- Each subclass must have a `slug` (kebab-case), `name` (title-case),  `description` (2–3 sentences), and at least one entry in `features` for each level indicated by the class's `choiceLevel`.
 - Feature descriptions must be self-contained mechanical text — no cross-references like "see page X."
 - Avoid repeating the same mechanical effect across multiple subclasses of the same class.
 - A subclass's first feature must be strong enough to define the subclass identity.
