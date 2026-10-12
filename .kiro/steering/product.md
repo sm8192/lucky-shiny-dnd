@@ -11,7 +11,7 @@ A custom D&D-style rulebook built with **Next.js 16 (App Router)**, **TypeScript
 - **Next.js 16** with App Router and `dynamicParams = false` on all dynamic routes
 - **TypeScript** — strict typing; never use `any` or widen interface types
 - **Tailwind CSS v4** — utility-first; `@tailwindcss/typography` used for MDX prose
-- **MDX** via `@next/mdx` with `remark-gfm`; `.mdx` files can export a `metadata` object
+- **MDX** via `@next/mdx` with `remark-gfm`; `.mdx` chapter files are content only — their metadata lives in `RULE_REGISTRY`
 - **Geist Sans / Geist Mono** fonts via `next/font/google`
 - Path alias `@/` maps to `src/`
 
@@ -50,9 +50,9 @@ src/
 
 ### Rules (MDX)
 
-- Rule chapters live in `src/content/rules/<slug>.mdx`.
-- Each file must export a `metadata` object: `{ title: string; description: string; order: number }`.
-- After adding an MDX file, add a matching entry to `RULE_REGISTRY` in `src/lib/rules.ts` — this registry drives static params, sidebar ordering, and `<head>` metadata. The file system is not scanned at runtime.
+- Rule chapters live in `src/content/rules/<slug>.mdx`. These files contain prose only — do not add a `metadata` export.
+- Chapter metadata (`{ title: string; description: string; order: number }`) lives solely in `RULE_REGISTRY` in `src/lib/rules.ts`, the single source of truth.
+- After adding an MDX file, add a matching entry to `RULE_REGISTRY` — this registry drives static params, sidebar ordering, and `<head>` metadata. The file system is not scanned at runtime.
 
 ## TypeScript Conventions
 
@@ -90,8 +90,8 @@ src/
 ## Adding Content Checklist
 
 **New Rule Chapter**
-1. Create `src/content/rules/<slug>.mdx` with exported `metadata`.
-2. Add entry to `RULE_REGISTRY` in `src/lib/rules.ts`.
+1. Create `src/content/rules/<slug>.mdx` with prose content only (no `metadata` export).
+2. Add entry to `RULE_REGISTRY` in `src/lib/rules.ts` with `title`, `description`, and `order`.
 
 **New Spell / Monster**
 1. Create `src/data/<section>/<slug>.ts` typed to the correct interface.

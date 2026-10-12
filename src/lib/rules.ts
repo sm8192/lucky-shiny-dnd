@@ -1,12 +1,12 @@
 /**
  * Server-side utility for reading rule chapter metadata.
  *
- * Each MDX file in src/content/rules/ exports a `metadata` object with
- * { title, description, order }. We maintain a static registry here so
- * Next.js can include everything at build time without needing fs/glob.
+ * This registry is the single source of truth for rule chapter metadata
+ * ({ title, description, order }). We keep it static here so Next.js can
+ * include everything at build time without needing fs/glob.
  *
  * When you add a new chapter:
- *   1. Create src/content/rules/<slug>.mdx with an exported `metadata` object.
+ *   1. Create src/content/rules/<slug>.mdx (content only — no metadata export).
  *   2. Add a matching entry to RULE_REGISTRY below.
  */
 
@@ -22,9 +22,9 @@ export interface RuleMetadata {
 // Registry — one entry per MDX file
 // ---------------------------------------------------------------------------
 const RULE_REGISTRY: Record<string, RuleMetadata> = {
-  introduction: {
-    title: "Introduction",
-    description: "What is this game, and how does it work?",
+  basics: {
+    title: "Basics",
+    description: "The underlying assumptions needed to play the game.",
     order: 1,
   },
   "ability-scores": {
@@ -42,6 +42,21 @@ const RULE_REGISTRY: Record<string, RuleMetadata> = {
     description: "Travel, navigation, and discovery in the wider world.",
     order: 4,
   },
+  "special-mechanics": {
+    title: "Special Mechanics",
+    description: "Ideals, Flaws, Inspiration, and Bonds.",
+    order: 5
+  },
+  "character-creation": {
+    title: "Character Creation",
+    description: "The steps for building a Player Character.",
+    order: 6
+  },
+  actions: {
+    title: "Actions",
+    description: "The basic actions any character can use.",
+    order: 7,
+  }
 };
 
 // ---------------------------------------------------------------------------
