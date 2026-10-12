@@ -131,36 +131,52 @@ export default async function ClassDetailPage({
       {/* Subclasses */}
       {cls.subclasses.length > 0 && (
         <Section title="Subclasses">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
             {cls.subclasses.map((sub) => (
-              <div
+              <details
                 key={sub.slug}
-                className="rounded-lg border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900"
+                className="group rounded-lg border border-stone-200 bg-white dark:border-stone-700 dark:bg-stone-900"
               >
-                <div className="mb-1 flex items-baseline gap-3">
+                <summary className="flex cursor-pointer list-none items-baseline gap-3 rounded-lg p-5 hover:bg-stone-50 dark:hover:bg-stone-800/50">
+                  <svg
+                    className="mt-1 h-3 w-3 flex-shrink-0 text-stone-400 transition-transform group-open:rotate-90"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 2l4 4-4 4"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                   <h3 className="text-base font-bold text-stone-900 dark:text-stone-100">
                     {sub.name}
                   </h3>
                   <span className="text-xs text-stone-400">
                     Chosen at level {cls.choiceLevel}
                   </span>
+                </summary>
+                <div className="px-5 pb-5 pl-11">
+                  <p className="mb-4 text-sm text-stone-600 dark:text-stone-400">
+                    {sub.description}
+                  </p>
+                  <ul className="flex flex-col gap-3">
+                    {sub.features.map((f) => (
+                      <li key={f.name}>
+                        <p className="text-sm font-semibold text-stone-800 dark:text-stone-200">
+                          Level {f.level}: {f.name}
+                        </p>
+                        <p className="text-sm text-stone-600 dark:text-stone-400">
+                          {f.description}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="mb-4 text-sm text-stone-600 dark:text-stone-400">
-                  {sub.description}
-                </p>
-                <ul className="flex flex-col gap-3">
-                  {sub.features.map((f) => (
-                    <li key={f.name}>
-                      <p className="text-sm font-semibold text-stone-800 dark:text-stone-200">
-                        Level {f.level}: {f.name}
-                      </p>
-                      <p className="text-sm text-stone-600 dark:text-stone-400">
-                        {f.description}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </details>
             ))}
           </div>
         </Section>
