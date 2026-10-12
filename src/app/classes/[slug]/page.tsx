@@ -58,6 +58,24 @@ export default async function ClassDetailPage({
         </dl>
       </Section>
 
+      {/* Expertise */}
+      {(cls.expertise.exploration.length > 0 || cls.expertise.social.length > 0) && (
+        <Section title="Expertise">
+          <div className="flex flex-col gap-5">
+            <ExpertiseGroup
+              className={cls.name}
+              kind="exploration"
+              conditions={cls.expertise.exploration}
+            />
+            <ExpertiseGroup
+              className={cls.name}
+              kind="social"
+              conditions={cls.expertise.social}
+            />
+          </div>
+        </Section>
+      )}
+
       {/* Level progression table */}
       <Section title="Level Progression">
         <div className="overflow-x-auto">
@@ -80,6 +98,35 @@ export default async function ClassDetailPage({
           </table>
         </div>
       </Section>
+
+      {/* Class features */}
+      {(() => {
+        const features = cls.levels
+          .flatMap((lvl) => lvl.features)
+          .sort((a, b) => a.level - b.level);
+
+        if (features.length === 0) return null;
+
+        return (
+          <Section title="Class Features">
+            <ul className="flex flex-col gap-4">
+              {features.map((f) => (
+                <li key={`${f.level}-${f.name}`}>
+                  <div className="mb-1 flex items-baseline gap-3">
+                    <h3 className="text-base font-semibold text-stone-900 dark:text-stone-100">
+                      {f.name}
+                    </h3>
+                    <span className="text-xs text-stone-400">Level {f.level}</span>
+                  </div>
+                  <p className="text-sm text-stone-600 dark:text-stone-400">
+                    {f.description}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </Section>
+        );
+      })()}
 
       {/* Subclasses */}
       {cls.subclasses.length > 0 && (
@@ -134,6 +181,30 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       </h2>
       {children}
     </section>
+  );
+}
+
+function ExpertiseGroup({
+  className,
+  kind,
+  conditions,
+}: {
+  className: string;
+  kind: "exploration" | "social";
+  conditions: string[];
+}) {
+  if (conditions.length === 0) return null;
+  return (
+    <div>
+      <p className="text-sm text-stone-700 dark:text-stone-300">
+        {className}s have expertise on {kind} checks when:
+      </p>
+      <ul className="mt-2 list-disc pl-5 text-sm text-stone-600 dark:text-stone-400">
+        {conditions.map((condition) => (
+          <li key={condition}>{condition}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
