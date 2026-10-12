@@ -10,7 +10,6 @@ export type AbilityScore =
 
 export type SavingThrow = "Fortitude" | "Reflex" | "Will";
 
-/**Multiply a character's proficiency bonus by this number to calculate that character's proficiency score.*/
 export type PerceptionProficiency = ".5" | "1" | "1.5" | "2";
 
 export type ArmorProficiency =

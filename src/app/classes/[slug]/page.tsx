@@ -47,7 +47,6 @@ export default async function ClassDetailPage({
       <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-5">
         <QuickStat label="Hit Die" value={cls.hitDie} />
         <QuickStat label="Saving Throws" value={cls.savingThrow} />
-        <QuickStat label="Perception" value={perceptionLabel(cls.perception)} />
         <QuickStat label="Subclasses" value={String(cls.subclasses.length)} />
       </div>
 
@@ -56,12 +55,6 @@ export default async function ClassDetailPage({
         <dl className="grid grid-cols-1 gap-y-3 text-sm sm:grid-cols-2">
           <ProfRow label="Armor" values={[cls.armorProficiency]} />
           <ProfRow label="Weapons" values={[cls.weaponProficiency]} />
-          <div>
-            <dt className="font-semibold text-stone-500 dark:text-stone-400">Perception</dt>
-            <dd className="mt-0.5 text-stone-800 dark:text-stone-200">
-              {perceptionLabel(cls.perception)}
-            </dd>
-          </div>
         </dl>
       </Section>
 
@@ -72,7 +65,7 @@ export default async function ClassDetailPage({
             <thead>
               <tr className="border-b border-stone-200 dark:border-stone-700">
                 <Th>Level</Th>
-                <Th>Prof. Bonus</Th>
+                <Th>Perception Bonus</Th>
                 <Th>Features</Th>
                 {slotLevels.map((sl) => (
                   <Th key={sl}>{ordinal(sl)} Slots</Th>
@@ -81,7 +74,7 @@ export default async function ClassDetailPage({
             </thead>
             <tbody>
               {cls.levels.map((row) => (
-                <LevelRow key={row.level} row={row} slotLevels={slotLevels} slots={slots.levels[row.level - 1]} />
+                <LevelRow key={row.level} row={row} slotLevels={slotLevels} slots={slots.levels[row.level - 1]} perceptionFactor={cls.perception} />
               ))}
             </tbody>
           </table>
@@ -177,11 +170,13 @@ function Th({ children }: { children: React.ReactNode }) {
 function LevelRow({
   row,
   slotLevels,
-  slots
+  slots,
+  perceptionFactor
 }: {
   row: ClassLevel;
   slotLevels: readonly (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)[];
   slots: Partial<Record<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9, number>>;
+  perceptionFactor: PerceptionProficiency;
 }) {
   return (
     <tr className="border-b border-stone-100 text-sm even:bg-stone-50 dark:border-stone-800 dark:even:bg-stone-900/50">
@@ -189,7 +184,7 @@ function LevelRow({
         {row.level}
       </td>
       <td className="px-2 py-1.5 text-stone-600 dark:text-stone-400">
-        +{Math.ceil(row.level / 4) + 1}
+        +{calculatePerceptionBonus(perceptionFactor, row.level)}
       </td>
       <td className="px-2 py-1.5 text-stone-600 dark:text-stone-400">
         {row.features.length > 0 ? row.features.map((f) => f.name).join(", ") : "—"}
@@ -218,6 +213,66 @@ function perceptionLabel(p: PerceptionProficiency): string {
     case "1": return "Full proficiency";
     case "1.5": return "1½ proficiency";
     case "2": return "Double proficiency";
+  }
+}
+
+function calculatePerceptionBonus(p: PerceptionProficiency, level: number): number {
+  if (p === '.5') {
+    if (level < 8) {
+      return 1;
+    } else if (level < 14) {
+      return 2;
+    } else {
+      return 3;
+    }
+  } else if (p === '1') {
+    if (level < 5) {
+      return 2;
+    } else if (level < 9) {
+      return 3;
+    } else if (level < 13) {
+      return 4;
+    } else if (level < 17) {
+      return 5;
+    } else {
+      return 6;
+    }
+  } else if (p === '1.5') {
+    if (level < 4) {
+      return 3;
+    } else if (level < 7) {
+      return 4;
+    } else if (level < 10) {
+      return 5;
+    } else if (level < 12) {
+      return 6;
+    } else if (level < 15) {
+      return 7;
+    } else if (level < 18) {
+      return 8;
+    } else {
+      return 9;
+    }
+  } else {
+    if (level < 3) {
+      return 4;
+    } else if (level < 5) {
+      return 5;
+    } else if (level < 8) {
+      return 6;
+    } else if (level < 10) {
+      return 7;
+    } else if (level < 12) {
+      return 8;
+    } else if (level < 14) {
+      return 9;
+    } else if (level < 17) {
+      return 10;
+    } else if (level < 19) {
+      return 11;
+    } else {
+      return 12;
+    }
   }
 }
 
