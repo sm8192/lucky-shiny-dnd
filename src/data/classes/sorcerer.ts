@@ -15,12 +15,12 @@ export const sorcerer: CharacterClass = {
   choiceLevel: 1,
   expertise: {
     exploration: [
-      "When sensing or unraveling ambient magic through instinct rather than study",
-      "When pushing through hostile magical environments using sheer force of will",
+      "sensing or unraveling ambient magic through instinct rather than study",
+      "pushing through hostile magical environments using sheer force of will"
     ],
     social: [
-      "When projecting authority or presence through visible displays of power",
-      "When intimidating or impressing creatures sensitive to magical auras",
+      "projecting authority or presence through visible displays of power",
+      "intimidating or impressing creatures sensitive to magical auras"
     ]
   },
   levels: [

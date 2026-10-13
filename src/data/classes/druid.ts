@@ -389,12 +389,12 @@ export const druid: CharacterClass = {
   ],
   expertise: {
     exploration: [
-      "When navigating, foraging, or surviving in natural environments",
-      "When identifying plants, animals, weather patterns, or natural hazards"
+      "navigating, foraging, or surviving in natural environments",
+      "identifying plants, animals, weather patterns, or natural hazards"
     ],
     social: [
-      "When speaking on behalf of nature, the land, or its creatures",
-      "When communicating with beasts, fey, or elemental spirits",
+      "speaking on behalf of nature, the land, or its creatures",
+      "communicating with beasts, fey, or elemental spirits",
     ],
   },
   spellcasting: "full",

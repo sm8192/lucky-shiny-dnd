@@ -413,12 +413,12 @@ export const ranger: CharacterClass = {
   ],
   expertise: {
     exploration: [
-      "When using your wits to master the wilderness",
-      "When tracking a creature or following signs of its passage",
+      "using your wits to master the wilderness",
+      "tracking a creature or following signs of its passage",
     ],
     social: [
-      "When communicating with or calming wild beasts",
-      "When trading knowledge with those who live on the frontier",
+      "communicating with or calming wild beasts",
+      "trading knowledge with those who live on the frontier",
     ]
   },
   spellcasting: "half",

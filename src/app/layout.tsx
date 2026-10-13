@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <NavBar />
         <main className="flex flex-1 flex-col">{children}</main>
         <footer className="border-t border-stone-200 py-4 text-center text-xs text-stone-400 dark:border-stone-800">
-          Rulebook — all content is original and for personal use only.
+          Use what you want.
         </footer>
       </body>
     </html>

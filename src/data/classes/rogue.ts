@@ -15,12 +15,12 @@ export const rogue: CharacterClass = {
   choiceLevel: 2,
   expertise: {
     exploration: [
-      "When circumventing physical security measures",
-      "When XxXxX",
+      "circumventing physical security measures",
+      "XxXxX"
     ],
     social: [
-      "When gathering secret information",
-      "When reading someone's hidden intentions",
+      "gathering secret information",
+      "reading someone's hidden intentions"
     ]
   },
   levels: [

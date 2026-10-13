@@ -47,14 +47,13 @@ export default async function ClassDetailPage({
       <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-5">
         <QuickStat label="Hit Die" value={cls.hitDie} />
         <QuickStat label="Saving Throws" value={cls.savingThrow} />
-        <QuickStat label="Subclasses" value={String(cls.subclasses.length)} />
       </div>
 
       {/* Proficiencies */}
       <Section title="Proficiencies">
         <dl className="grid grid-cols-1 gap-y-3 text-sm sm:grid-cols-2">
-          <ProfRow label="Armor" values={[cls.armorProficiency]} />
-          <ProfRow label="Weapons" values={[cls.weaponProficiency]} />
+          <ProfRow label="Armor" values={[capitalize(cls.armorProficiency)]} />
+          <ProfRow label="Weapons" values={[capitalize(cls.weaponProficiency)]} />
         </dl>
       </Section>
 
@@ -155,9 +154,6 @@ export default async function ClassDetailPage({
                   <h3 className="text-base font-bold text-stone-900 dark:text-stone-100">
                     {sub.name}
                   </h3>
-                  <span className="text-xs text-stone-400">
-                    Chosen at level {cls.choiceLevel}
-                  </span>
                 </summary>
                 <div className="px-5 pb-5 pl-11">
                   <p className="mb-4 text-sm text-stone-600 dark:text-stone-400">
@@ -292,6 +288,10 @@ function ordinal(n: number) {
   const suffixes = ["th", "st", "nd", "rd"];
   const v = n % 100;
   return n + (suffixes[(v - 20) % 10] ?? suffixes[v] ?? suffixes[0]);
+}
+
+function capitalize(value: string): string {
+  return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
 function perceptionLabel(p: PerceptionProficiency): string {

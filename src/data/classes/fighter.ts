@@ -263,12 +263,12 @@ export const fighter: CharacterClass = {
   ],
   expertise: {
     exploration: [
-      "When pushing your body to its physical limit against an obstacle or hazard",
-      "When assessing an enemy's combat capabilities or the tactics of a battlefield",
+      "pushing your body to its physical limit against an obstacle or hazard",
+      "assessing an enemy's combat capabilities or the tactics of a battlefield",
     ],
     social: [
-      "When commanding respect through martial reputation or a show of arms",
-      "When holding the line as a trusted protector others rally behind",
+      "commanding respect through martial reputation or a show of arms",
+      "holding the line as a trusted protector others rally behind",
     ],
   },
   spellcasting: "none"

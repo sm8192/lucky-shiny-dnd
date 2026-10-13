@@ -426,12 +426,12 @@ export const paladin: CharacterClass = {
   ],
   expertise: {
     exploration: [
-      "When detecting the presence of evil, corruption, or the undead",
-      "When enduring hardship in service of a sworn cause",
+      "detecting the presence of evil, corruption, or the undead",
+      "enduring hardship in service of a sworn cause",
     ],
     social: [
-      "When invoking divine authority",
-      "When inspiring others to live up to their ideals"
+      "invoking divine authority",
+      "inspiring others to live up to their ideals"
     ]
   },
   spellcasting: "half",

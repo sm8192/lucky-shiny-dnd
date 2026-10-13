@@ -257,12 +257,12 @@ export const wizard: CharacterClass = {
   ],
   expertise: {
     exploration: [
-      "When researching arcane lore, deciphering magical writing, or identifying spells",
-      "When analyzing or manipulating magical phenomena and enchanted objects",
+      "researching arcane lore, deciphering magical writing, or identifying spells",
+      "analyzing or manipulating magical phenomena and enchanted objects",
     ],
     social: [
-      "When advising others on matters of magic, history, or the planes",
-      "When negotiating with scholars, mages, or arcane institutions",
+      "advising others on matters of magic, history, or the planes",
+      "negotiating with scholars, mages, or arcane institutions",
     ]
   },
   spellcasting: "full"

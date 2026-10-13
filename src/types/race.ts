@@ -1,8 +1,7 @@
 import type { AbilityScore } from "./character-class";
 
-export type CreatureSize = "small" | "medium" | "large";
+export type CreatureSize = "tiny" | "small" | "medium" | "large";
 
-/** A bonus applied to a single ability score at character creation. */
 export interface AbilityScoreIncrease {
   ability: AbilityScore;
   bonus: number;

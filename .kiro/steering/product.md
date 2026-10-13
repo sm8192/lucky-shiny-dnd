@@ -4,7 +4,7 @@ inclusion: always
 
 # Lucky Shiny DnD — Rulebook App
 
-A custom D&D-style rulebook built with **Next.js 16 (App Router)**, **TypeScript**, **Tailwind CSS v4**, and **MDX**. It is a statically generated reference site with four content sections: Rules, Classes, Spells, and Monsters.
+A custom D&D-style rulebook built with **Next.js 16 (App Router)**, **TypeScript**, **Tailwind CSS v4**, and **MDX**. It is a statically generated reference site with six content sections: Rules, Classes, Races, Spells, Feats, and Monsters.
 
 ## Tech Stack
 
@@ -24,27 +24,31 @@ src/
 │   ├── page.tsx          # Home page
 │   ├── rules/            # MDX-driven rules section (sidebar layout)
 │   ├── classes/          # Character class listing + [slug] detail
+│   ├── races/            # Race listing + [slug] detail
 │   ├── spells/           # Spell listing + [slug] detail
+│   ├── feats/            # Feat listing + [slug] detail
 │   └── monsters/         # Monster listing + [slug] detail
 ├── components/           # Shared UI components
 ├── content/rules/        # MDX chapter files (one per rule topic)
 ├── data/                 # Static TypeScript data files
 │   ├── classes/          # One file per class + index barrel
+│   ├── races/            # One file per race + index barrel
 │   ├── spells/           # One file per spell + index barrel
+│   ├── feats/            # One file per feat + index barrel
 │   ├── monsters/         # One file per monster + index barrel
 │   └── spell progression/# Spell slot tables (full/half/pact casters)
 ├── lib/
 │   └── rules.ts          # Static rule registry + sidebar helpers
-├── types/                # TypeScript interfaces (spell, monster, character-class, spell-progression)
+├── types/                # TypeScript interfaces (spell, feat, race, monster, character-class, spell-progression)
 └── mdx-components.tsx    # Global MDX component overrides
 ```
 
 ## Content Architecture
 
-### Data Files (classes, spells, monsters)
+### Data Files (classes, races, spells, feats, monsters)
 
 - One entity per file. File name must be the kebab-case `slug`, e.g. `fireball.ts`.
-- Each file exports a single named camelCase constant typed to the relevant interface: `Spell`, `Monster`, `CharacterClass`.
+- Each file exports a single named camelCase constant typed to the relevant interface: `Spell`, `Feat`, `Race`, `Monster`, `CharacterClass`.
 - After creating a file, add a named re-export and an entry to the `all*` array in `index.ts`. The barrel is the single import point for consumers.
 - Do not add logic to data files — pure data only.
 
@@ -66,6 +70,9 @@ src/
   - `spellcastingProgression`: `"none" | "half" | "full" | "pact"`
   - `SpellSchool`: the eight standard schools
   - `CastingTime`: the typed union of valid casting time strings
+  - `CreatureSize`: `"tiny" | "small" | "medium" | "large"`
+  - `FeatCategory`: `"general" | "fighting-style" | "metamagic" | "epic"`
+- Enum-like unions use lowercase values; capitalize at display time (e.g. the `capitalize` helper on detail pages).
 - Verify with `npm run build` — TypeScript errors are build errors.
 
 ## UI & Styling Conventions
@@ -93,7 +100,7 @@ src/
 1. Create `src/content/rules/<slug>.mdx` with prose content only (no `metadata` export).
 2. Add entry to `RULE_REGISTRY` in `src/lib/rules.ts` with `title`, `description`, and `order`.
 
-**New Spell / Monster**
+**New Spell / Feat / Race / Monster**
 1. Create `src/data/<section>/<slug>.ts` typed to the correct interface.
 2. Add named re-export and push to `all*` array in `src/data/<section>/index.ts`.
 

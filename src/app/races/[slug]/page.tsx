@@ -42,7 +42,6 @@ export default async function RaceDetailPage({
           label="Ability Scores"
           value={formatIncreases(race.abilityScoreIncreases)}
         />
-        <QuickStat label="Subraces" value={String(race.subraces.length)} />
       </div>
 
       {/* Traits */}

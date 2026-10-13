@@ -15,12 +15,12 @@ export const warlock: CharacterClass = {
   choiceLevel: 1,
   expertise: {
     exploration: [
-      "When uncovering forbidden lore or the secrets of extraplanar beings",
-      "When bargaining with or reading the intent of otherworldly entities",
+      "uncovering forbidden lore or the secrets of extraplanar beings",
+      "bargaining with or reading the intent of otherworldly entities",
     ],
     social: [
-      "When extracting concessions through implied threat or hidden leverage",
-      "When invoking the name or authority of your patron to unsettle others",
+      "extracting concessions through implied threat or hidden leverage",
+      "invoking the name or authority of your patron to unsettle others",
     ]
   },
   levels: [

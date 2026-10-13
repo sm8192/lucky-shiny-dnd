@@ -420,12 +420,12 @@ export const monk: CharacterClass = {
   ],
   expertise: {
     exploration: [
-      "When crossing treacherous terrain through agility, balance, or acrobatics",
-      "When enduring physical hardship through disciplined control of the body",
+      "crossing treacherous terrain through agility, balance, or acrobatics",
+      "enduring physical hardship through disciplined control of the body",
     ],
     social: [
-      "When maintaining composure under pressure or provocation",
-      "When observing the subtle tells and intentions of others",
+      "maintaining composure under pressure or provocation",
+      "observing the subtle tells and intentions of others",
     ],
   },
   spellcasting: "none",
